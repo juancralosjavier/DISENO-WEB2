@@ -1,0 +1,81 @@
+<div class="container mt-5">
+  <h2>Gestión de Vehículos</h2>
+  <form [formGroup]="vehiculoForm" (ngSubmit)="onSubmit()" class="mt-4">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="placa">Placa</label>
+        <input type="text" class="form-control" id="placa" formControlName="placa" placeholder="Ingrese la placa">
+        <div *ngIf="vehiculoForm.get('placa')?.invalid && vehiculoForm.get('placa')?.touched" class="text-danger">
+          Placa es requerida.
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="marca">Marca</label>
+        <input type="text" class="form-control" id="marca" formControlName="marca" placeholder="Ingrese la marca">
+        <div *ngIf="vehiculoForm.get('marca')?.invalid && vehiculoForm.get('marca')?.touched" class="text-danger">
+          Marca es requerida.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="modelo">Modelo</label>
+        <input type="text" class="form-control" id="modelo" formControlName="modelo" placeholder="Ingrese el modelo">
+        <div *ngIf="vehiculoForm.get('modelo')?.invalid && vehiculoForm.get('modelo')?.touched" class="text-danger">
+          Modelo es requerido.
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="color">Color</label>
+        <input type="text" class="form-control" id="color" formControlName="color" placeholder="Ingrese el color">
+        <div *ngIf="vehiculoForm.get('color')?.invalid && vehiculoForm.get('color')?.touched" class="text-danger">
+          Color es requerido.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="propietario">Propietario</label>
+        <input type="text" class="form-control" id="propietario" formControlName="propietario" placeholder="Ingrese el propietario">
+        <div *ngIf="vehiculoForm.get('propietario')?.invalid && vehiculoForm.get('propietario')?.touched" class="text-danger">
+          Propietario es requerido.
+        </div>
+      </div>
+     
+    </div>
+    <button  type="submit" class="btn btn-primary mt-3">Guardar</button>
+  </form>
+
+  <h3 class="mt-5">Lista de Vehículos</h3>
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th>Placa</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Color</th>
+        <th>Propietario</th>
+        <th>Fecha de Registro</th>
+        <th>Estado de Registro</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vehiculo of vehiculos">
+        <td>{{ vehiculo.placa }}</td>
+        <td>{{ vehiculo.marca }}</td>
+        <td>{{ vehiculo.modelo }}</td>
+        <td>{{ vehiculo.color }}</td>
+        <td>{{ vehiculo.propietario }}</td>
+        <td>{{ vehiculo.fecharegistro | date }}</td>
+        <td>{{ vehiculo.estadoregistro }}</td>
+        <td>
+          <button class="btn btn-warning btn-sm" (click)="editVehiculo(vehiculo)">Editar</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteVehiculo(vehiculo.idvehiculo)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
