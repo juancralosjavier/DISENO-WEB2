@@ -1,0 +1,13 @@
+.container {
+    padding-top: 50px;
+  }
+  
+  .btn-primary {
+    margin-top: 20px;
+  }
+  
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
